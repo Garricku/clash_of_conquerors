@@ -22,10 +22,10 @@ bg_img = pygame.image.load('assets/backgrounds/background_0.png')
 scaled_bg = pygame.transform.scale(bg_img, (win_width, win_height))
 
 # Load chess board
-chess_board = pygame.image.load('assets/chess_board/chess_table_v2.png')
-scale_board = pygame.transform.scale(chess_board, (win_width // 1.3, win_height // 1))
+chess_board = pygame.image.load('assets/chess_board/chess_table_v3.png')
+scale_board = pygame.transform.scale(chess_board, (win_width // 2, win_height // 1.3))
 board_x = (win_width - scale_board.get_width()) // 2
-board_y = (win_height - scale_board.get_height()) // 2 - 35
+board_y = (win_height - scale_board.get_height()) // 2
 
 # Load buttons and bars
 menu_button = pygame.image.load('assets/buttons/menu_button_small.png')
@@ -59,9 +59,14 @@ timer_y = (win_height - scale_timer.get_height()) -80
 
 # Chess pieces
 w_king = pygame.image.load('assets/chess_pieces/white_king.png')
-scale_w_king = pygame.transform.scale(w_king, (90, 100))
-col_4 = 220
-row_1 = 400
+scale_w_king = pygame.transform.scale(w_king, (85, 70))
+col_4 = 248
+row_1 = 404
+
+w_pawn = pygame.image.load('assets/chess_pieces/white_pawn.png')
+scale_w_pawn = pygame.transform.scale(w_pawn, (85, 70))
+col_3 = 220
+row_3 = 404
 
 pygame.init()
 
@@ -86,6 +91,7 @@ while True:
     screen.blit(scale_board, (board_x, board_y))
 
     # Draw chess pieces
+    screen.blit(scale_w_pawn, (row_3, col_3))
     screen.blit(scale_w_king, (row_1, col_4))
 
     # Player and opponent profiles
