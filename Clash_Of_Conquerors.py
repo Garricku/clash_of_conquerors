@@ -7,8 +7,8 @@ import sys
 
 
 # Window size
-win_width = 1024
-win_height = 600
+win_width = 1280
+win_height = 720
 
 # Load custom mouse cursor
 cursor_image = pygame.image.load('assets\cursors\custom_cursor.png')
@@ -41,7 +41,7 @@ underline_opt.set_alpha(0)
 pygame.init()
 
 # Set game window
-screen = pygame.display.set_mode((win_width, win_height))
+screen = pygame.display.set_mode((win_width, win_height), pygame.FULLSCREEN)
 pygame.display.set_caption("Clash Of Conquerors")
 pygame.mouse.set_visible(False)  # Hide default cursor
 

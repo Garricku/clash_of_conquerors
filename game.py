@@ -7,8 +7,8 @@ import sys
 
 
 # Window size
-win_width = 1024
-win_height = 600
+win_width = 1280
+win_height = 720
 
 # Load custom mouse cursor
 cursor_image = pygame.image.load('assets\cursors\custom_cursor.png')
@@ -71,7 +71,7 @@ row_3 = 404
 pygame.init()
 
 # Set game window
-screen = pygame.display.set_mode((win_width, win_height))
+screen = pygame.display.set_mode((win_width, win_height), pygame.FULLSCREEN)
 pygame.display.set_caption("Clash Of Conquerors")
 pygame.mouse.set_visible(False)  # Hide default cursor
 
@@ -85,7 +85,7 @@ while True:
             sys.exit()
 
     # Draw background
-    screen.blit(bg_img, (0, 0))
+    screen.blit(scaled_bg, (0, 0))
 
     # Draw chessboard
     screen.blit(scale_board, (board_x, board_y))
