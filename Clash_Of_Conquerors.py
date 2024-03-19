@@ -11,7 +11,7 @@ win_width = 1280
 win_height = 720
 
 # Load custom mouse cursor
-cursor_image = pygame.image.load('assets\cursors\custom_cursor.png')
+cursor_image = pygame.image.load('assets/cursors/custom_cursor.png')
 
 # Load background image
 background_image = pygame.image.load('assets/title_screens/title_coc_2.png')
