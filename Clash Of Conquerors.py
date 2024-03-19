@@ -16,7 +16,6 @@ cursor_image = pygame.image.load('assets\cursors\custom_cursor.png')
 # Load background image
 background_image = pygame.image.load('assets/title_screens/title_coc_2.png')
 scaled_background = pygame.transform.scale(background_image, (win_width, win_height))
-scaled_cursor_image = pygame.transform.scale(cursor_image, (50, 50))
 
 # Load the main menu
 main_menu = pygame.image.load('assets/menus/menu_list.png')
@@ -29,6 +28,15 @@ menu_y = (win_height - scaled_main_menu.get_height()) // 2
 icon_image = pygame.image.load('assets/icons/coc_icon_bigger.png')
 pygame.display.set_icon(icon_image)
 
+# This is the underline for menu selection
+underline = pygame.image.load('assets/menus/underline.png')
+underline.set_alpha(0)
+underline_help = pygame.image.load('assets/menus/underline.png')
+underline_help.set_alpha(0)
+underline_exit = pygame.image.load('assets/menus/underline.png')
+underline_exit.set_alpha(0)
+underline_opt = pygame.image.load('assets/menus/underline.png')
+underline_opt.set_alpha(0)
 
 pygame.init()
 
@@ -55,11 +63,61 @@ menu_exit = font.render('Exit', True, (60, 60, 60), None)
 exit_rect = menu_exit.get_rect()
 exit_rect.center = (win_width // 2, win_height // 2 + 150)
 
+play_line = text.get_rect()
+play_line.center = (win_width // 2 - 50, win_height // 2 + 25)
+opt_line = menu_opt.get_rect()
+opt_line.center = (win_width // 2 - 15, win_height // 2 + 75)
+help_line = menu_opt.get_rect()
+help_line.center = (win_width // 2 - 15, win_height // 2 + 125)
+exit_line = menu_opt.get_rect()
+exit_line.center = (win_width // 2 - 15, win_height // 2 + 175)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if exit_rect.collidepoint(event.pos):
+                # Button clicked!
+                pygame.quit()
+                sys.exit()
+
+            elif textRect.collidepoint(event.pos):
+                # Button clicked!
+                screen.fill((0, 0, 0))
+
+            elif opt_rect.collidepoint(event.pos):
+                # Button clicked!
+                screen.fill((0, 0, 0))
+
+            elif help_rect.collidepoint(event.pos):
+                # Button clicked!
+                screen.fill((0, 0, 0))
+
+    # Check if the mouse is hovering over the text rectangle
+    if textRect.collidepoint(pygame.mouse.get_pos()):
+        # Make underline visible
+        underline.set_alpha(255)
+    else:
+        # Make underline invisible
+        underline.set_alpha(0)
+
+    if opt_rect.collidepoint(pygame.mouse.get_pos()):
+        underline_opt.set_alpha(255)
+    else:
+        underline_opt.set_alpha(0)
+
+    if help_rect.collidepoint(pygame.mouse.get_pos()):
+        underline_help.set_alpha(255)
+    else:
+        underline_help.set_alpha(0)
+
+    if exit_rect.collidepoint(pygame.mouse.get_pos()):
+        underline_exit.set_alpha(255)
+    else:
+        underline_exit.set_alpha(0)
 
     # Draw background image
     screen.blit(scaled_background, (0, 0))
@@ -73,10 +131,14 @@ while True:
     screen.blit(menu_opt, opt_rect)
     screen.blit(menu_help, help_rect)
     screen.blit(menu_exit, exit_rect)
+    screen.blit(underline, play_line)
+    screen.blit(underline_help, help_line)
+    screen.blit(underline_opt, opt_line)
+    screen.blit(underline_exit, exit_line)
 
     # Draw custom cursor
     cursor_rect = cursor_image.get_rect(center=pygame.mouse.get_pos())
-    screen.blit(scaled_cursor_image, cursor_rect)
+    screen.blit(cursor_image, cursor_rect)
 
     # Keep display updated
     pygame.display.update()
