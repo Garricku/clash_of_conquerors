@@ -65,7 +65,7 @@ row_3 = 404
 pygame.init()
 
 # Set game window
-screen = pygame.display.set_mode((win_width, win_height), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Clash Of Conquerors")
 pygame.mouse.set_visible(False)  # Hide default cursor
 
@@ -77,6 +77,12 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if menu_button.collidepoint(event.pos):
+                # Button clicked!
+                pygame.quit()
+                sys.exit()
 
     # Draw background
     screen.blit(scaled_bg, (0, 0))

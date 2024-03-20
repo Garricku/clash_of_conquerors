@@ -41,7 +41,7 @@ underline_opt.set_alpha(0)
 pygame.init()
 
 # Set game window
-screen = pygame.display.set_mode((win_width, win_height), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Clash Of Conquerors")
 pygame.mouse.set_visible(False)  # Hide default cursor
 
