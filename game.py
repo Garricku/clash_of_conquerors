@@ -159,7 +159,7 @@ class Game:
     def show_cursor(self, surface):
         """Displays the custom cursor"""
         # Load custom mouse cursor
-        cursor_image = pygame.image.load('assets\cursors\custom_cursor.png')
+        cursor_image = pygame.image.load('assets/cursors/custom_cursor.png')
         # Hide default cursor
         pygame.mouse.set_visible(False)
         # Draw custom cursor
@@ -178,15 +178,16 @@ class Game:
 
     def show_chessboard(self, surface):
         """Displays the chessboard"""
+        # Calculate the starting position to center the chessboard
+        start_x = (WIN_WIDTH - COLS * SQUARE) // 2
+        start_y = (WIN_HEIGHT - ROWS * SQUARE) // 2
+
+        # Create the chessboard
         for row in range(ROWS):
             for col in range(COLS):
-                if (row + col) % 2 == 0:
-                    color = (255, 255, 255) # White
-                else:
-                    color = (0, 0, 0) # Black
-
-                rect = (col * SQUARE, row * SQUARE, SQUARE, SQUARE)
-                pygame.draw.rect(surface, color, rect)
+                x, y = start_x + col * SQUARE, start_y + row * SQUARE
+                color = (0, 0, 0) if (row + col) % 2 == 0 else (255, 255, 255)
+                pygame.draw.rect(surface, color, (x, y, SQUARE, SQUARE))
 
     def show_profiles(self, surface):
         """Displays player and opponent profiles"""
