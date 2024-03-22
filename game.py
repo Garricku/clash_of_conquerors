@@ -74,30 +74,30 @@ class Game:
         underline_opt.set_alpha(0)
         # Display text of main menu
         font = pygame.font.Font('freesansbold.ttf', 32)
-        text = font.render('Play', True, (60, 60, 60), None)
+        text = font.render('PLAY', True, (60, 60, 60), None)
         textRect = text.get_rect()
         textRect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2)
 
-        menu_opt = font.render('Settings', True, (60, 60, 60), None)
+        menu_opt = font.render('SETTINGS', True, (60, 60, 60), None)
         opt_rect = menu_opt.get_rect()
         opt_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 50)
 
-        menu_help = font.render('How To Play', True, (60, 60, 60), None)
+        menu_help = font.render('TUTORIAL', True, (60, 60, 60), None)
         help_rect = menu_help.get_rect()
         help_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 100)
 
-        menu_exit = font.render('Exit', True, (60, 60, 60), None)
+        menu_exit = font.render('EXIT', True, (60, 60, 60), None)
         exit_rect = menu_exit.get_rect()
         exit_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 150)
 
         play_line = text.get_rect()
-        play_line.center = (WIN_WIDTH // 2 - 50, WIN_HEIGHT // 2 + 25)
+        play_line.center = (WIN_WIDTH // 2 - 44, WIN_HEIGHT // 2 + 25)
         opt_line = menu_opt.get_rect()
-        opt_line.center = (WIN_WIDTH // 2 - 15, WIN_HEIGHT // 2 + 75)
+        opt_line.center = (WIN_WIDTH // 2 - 2, WIN_HEIGHT // 2 + 75)
         help_line = menu_opt.get_rect()
-        help_line.center = (WIN_WIDTH // 2 - 15, WIN_HEIGHT // 2 + 125)
+        help_line.center = (WIN_WIDTH // 2 - 2, WIN_HEIGHT // 2 + 125)
         exit_line = menu_opt.get_rect()
-        exit_line.center = (WIN_WIDTH // 2 - 15, WIN_HEIGHT // 2 + 175)
+        exit_line.center = (WIN_WIDTH // 2 - 4, WIN_HEIGHT // 2 + 175)
 
         surface.blit(scaled_main_menu, (menu_x, menu_y))
         # Draw the text
@@ -172,28 +172,31 @@ class Game:
         scaled_bg = pygame.transform.scale(bg_img, (WIN_WIDTH, WIN_HEIGHT))
         surface.blit(scaled_bg, (0, 0))
 
-    def fade_out(self, surface):
+    def fade_out_fade_in(self, surface):
         """Fades out to black for smoother transitions"""
         color = (0, 0, 0) # Black
         visibility = 0 # Invisible
         while visibility <= 255:
             surface.fill(color, (visibility))
             visibility += 5 # Increase visibility till fully black
+        while visibility >= 0:
+            surface.fill(color, (visibility))
+            visibility -= 5 # Decrease the visibility till no black
 
     def show_settings(self, surface):
         """Displays the settings menu"""
         font = pygame.font.Font('freesansbold.ttf', 32)
         settings_display = pygame.image.load('assets/borders/timer_border_2.png')
-        scaled_setts = pygame.transform.scale(settings_display, (WIN_WIDTH // 1.2, WIN_HEIGHT / 1.2))
+        scaled_setts = pygame.transform.scale(settings_display, (WIN_WIDTH, WIN_HEIGHT - 70))
         underline_back = pygame.image.load('assets/menus/underline.png')
         underline_back.set_alpha(0)
-        menu_back = font.render('Return', True, (180, 180, 180), None)
+        menu_back = font.render('RETURN', True, (160, 160, 160), None)
         back_rect = menu_back.get_rect()
-        back_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 150)
+        back_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 210)
         back_line = menu_back.get_rect()
-        back_line.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 175)
+        back_line.center = (WIN_WIDTH // 2 - 19, WIN_HEIGHT // 2 + 235)
 
-        surface.blit(scaled_setts, (75, 50))
+        surface.blit(scaled_setts, (0, 50))
         surface.blit(menu_back, back_rect)
 
         for event in pygame.event.get():
@@ -213,16 +216,16 @@ class Game:
         """Display the how to play screen"""
         font = pygame.font.Font('freesansbold.ttf', 32)
         settings_display = pygame.image.load('assets/borders/timer_border_2.png')
-        scaled_setts = pygame.transform.scale(settings_display, (WIN_WIDTH // 1.2, WIN_HEIGHT / 1.2))
+        scaled_setts = pygame.transform.scale(settings_display, (WIN_WIDTH, WIN_HEIGHT - 70))
         underline_back = pygame.image.load('assets/menus/underline.png')
         underline_back.set_alpha(0)
-        menu_back = font.render("Return", True, (60, 60, 60), None)
+        menu_back = font.render("RETURN", True, (160, 160, 160), None)
         back_rect = menu_back.get_rect()
-        back_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 150)
+        back_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 210)
         back_line = menu_back.get_rect()
-        back_line.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 175)
+        back_line.center = (WIN_WIDTH // 2 - 19, WIN_HEIGHT // 2 + 235)
 
-        surface.blit(scaled_setts, (75, 50))
+        surface.blit(scaled_setts, (0, 50))
         surface.blit(menu_back, back_rect)
 
         for event in pygame.event.get():

@@ -26,13 +26,13 @@ class Main(Game):
         while True:
             while self.game.opt == True: # Setting menu loop starts here
                 self.game.show_menu_bg(self.screen)
-                self.show_settings(self.screen)
+                self.game.show_settings(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
-            while self.game.help == True:
+            while self.game.help == True: # Tutorial loop
                 self.game.show_menu_bg(self.screen)
-                self.show_tutorial(self.screen)
+                self.game.show_tutorial(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
@@ -51,11 +51,11 @@ class Main(Game):
                     self.game.show_cursor(self.screen)
                     pygame.display.update()
 
-                    while self.game.opt == True: # This is in the menu loop of chess game loop
-                        self.game.show_menu_bg(self.screen)
-                        self.show_settings(self.screen)
-                        self.game.show_cursor(self.screen)
-                        pygame.display.update()
+                while self.game.opt == True: # This is in the menu loop of chess game loop
+                    self.game.show_menu_bg(self.screen)
+                    self.game.show_settings(self.screen)
+                    self.game.show_cursor(self.screen)
+                    pygame.display.update()
 
             # This is the main menu loop
             self.game.show_main_bg(self.screen)
