@@ -14,12 +14,13 @@ class Main(Game):
     def __init__(self):
         """initialize game and display the screen"""
         pygame.init()
-        self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.FULLSCREEN)
+        self.game = Game()
+        self.screen = pygame.display.set_mode((self.game.WIN_WIDTH, self.game.WIN_HEIGHT), pygame.FULLSCREEN)
         pygame.display.set_caption("Clash Of Conquerors")
         # Load and set the icon
         icon_image = pygame.image.load('assets/icons/coc_icon_bigger.png')
         pygame.display.set_icon(icon_image)
-        self.game = Game()
+
 
     def mainloop(self):
         """Main game loop"""
