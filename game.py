@@ -166,6 +166,78 @@ class Game:
         cursor_rect = cursor_image.get_rect(center=pygame.mouse.get_pos())
         surface.blit(cursor_image, cursor_rect)
 
+    def show_menu_bg(self, surface):
+        """Displays the background for menus"""
+        bg_img = pygame.image.load('assets/title_screens/title_coc_1.png')
+        scaled_bg = pygame.transform.scale(bg_img, (WIN_WIDTH, WIN_HEIGHT))
+        surface.blit(scaled_bg, (0, 0))
+
+    def fade_out(self, surface):
+        """Fades out to black for smoother transitions"""
+        color = (0, 0, 0) # Black
+        visibility = 0 # Invisible
+        while visibility <= 255:
+            surface.fill(color, (visibility))
+            visibility += 5 # Increase visibility till fully black
+
+    def show_settings(self, surface):
+        """Displays the settings menu"""
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        settings_display = pygame.image.load('assets/borders/timer_border_2.png')
+        scaled_setts = pygame.transform.scale(settings_display, (WIN_WIDTH // 1.2, WIN_HEIGHT / 1.2))
+        underline_back = pygame.image.load('assets/menus/underline.png')
+        underline_back.set_alpha(0)
+        menu_back = font.render('Return', True, (180, 180, 180), None)
+        back_rect = menu_back.get_rect()
+        back_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 150)
+        back_line = menu_back.get_rect()
+        back_line.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 175)
+
+        surface.blit(scaled_setts, (75, 50))
+        surface.blit(menu_back, back_rect)
+
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if back_rect.collidepoint(event.pos):
+                    # Button clicked!
+                    self.set_opt(False)
+
+        if back_rect.collidepoint(pygame.mouse.get_pos()):
+            underline_back.set_alpha(255)
+            surface.blit(underline_back, back_line)
+        else:
+            underline_back.set_alpha(0)
+            surface.blit(underline_back, back_line)
+
+    def show_tutorial(self, surface):
+        """Display the how to play screen"""
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        settings_display = pygame.image.load('assets/borders/timer_border_2.png')
+        scaled_setts = pygame.transform.scale(settings_display, (WIN_WIDTH // 1.2, WIN_HEIGHT / 1.2))
+        underline_back = pygame.image.load('assets/menus/underline.png')
+        underline_back.set_alpha(0)
+        menu_back = font.render("Return", True, (60, 60, 60), None)
+        back_rect = menu_back.get_rect()
+        back_rect.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 150)
+        back_line = menu_back.get_rect()
+        back_line.center = (WIN_WIDTH // 2, WIN_HEIGHT // 2 + 175)
+
+        surface.blit(scaled_setts, (75, 50))
+        surface.blit(menu_back, back_rect)
+
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if back_rect.collidepoint(event.pos):
+                    # Button clicked!
+                    self.set_help(False)
+
+        if back_rect.collidepoint(pygame.mouse.get_pos()):
+            underline_back.set_alpha(255)
+            surface.blit(underline_back, back_line)
+        else:
+            underline_back.set_alpha(0)
+            surface.blit(underline_back, back_line)
+
     def show_game_bg(self, surface):
         """
         Displays the in-game background
@@ -239,7 +311,7 @@ class Game:
     def show_game_menu(self, surface):
         """Displays the in game menu"""
         game_menu = pygame.image.load('assets/menus/coc_menu.png')
-        scaled_game_menu = pygame.transform.scale(game_menu, (WIN_WIDTH // 2.3, WIN_HEIGHT // 1.2))
+        scaled_game_menu = pygame.transform.scale(game_menu, (WIN_WIDTH // 3, WIN_HEIGHT // 1.5))
         game_menu_x = (WIN_WIDTH - scaled_game_menu.get_width()) // 2
         game_menu_y = (WIN_HEIGHT - scaled_game_menu.get_height()) // 2
 
@@ -287,7 +359,8 @@ class Game:
 
                 if setts_rect.collidepoint(event.pos):
                     # Button clicked!
-                    pass
+                    self.set_menu_state(False)
+                    self.set_opt(True)
 
                 if surrender_rect.collidepoint(event.pos):
                     # Button clicked!

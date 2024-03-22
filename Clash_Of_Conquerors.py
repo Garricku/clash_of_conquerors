@@ -24,32 +24,43 @@ class Main(Game):
     def mainloop(self):
         """Main game loop"""
         while True:
-            if self.game.play == True:
-                while self.game.play == True:
-                    self.game.show_game_bg(self.screen)
-                    self.game.show_chessboard(self.screen)
-                    self.game.show_profiles(self.screen)
-                    self.game.show_menu_button(self.screen)
-                    self.game.show_timer(self.screen)
-                    
-                    if self.game.menu_state == True:
-                        self.game.show_game_menu(self.screen)
-                        self.game.show_cursor(self.screen)
+            while self.game.opt == True: # Setting menu loop starts here
+                self.game.show_menu_bg(self.screen)
+                self.show_settings(self.screen)
+                self.game.show_cursor(self.screen)
+                pygame.display.update()
 
+            while self.game.help == True:
+                self.game.show_menu_bg(self.screen)
+                self.show_tutorial(self.screen)
+                self.game.show_cursor(self.screen)
+                pygame.display.update()
+
+            while self.game.play == True: # Chess game loop starts here
+                self.game.show_game_bg(self.screen)
+                self.game.show_chessboard(self.screen)
+                self.game.show_profiles(self.screen)
+                self.game.show_menu_button(self.screen)
+                self.game.show_timer(self.screen)
+                self.game.show_cursor(self.screen)
+                pygame.display.update()
+
+                while self.game.menu_state == True: # This is in the chess game loop
+                    self.game.show_menu_bg(self.screen)
+                    self.game.show_game_menu(self.screen)
                     self.game.show_cursor(self.screen)
-
                     pygame.display.update()
 
-            elif self.game.get_opt() == True:
-                pass
+                    while self.game.opt == True: # This is in the menu loop of chess game loop
+                        self.game.show_menu_bg(self.screen)
+                        self.show_settings(self.screen)
+                        self.game.show_cursor(self.screen)
+                        pygame.display.update()
 
-            elif self.game.get_help() == True:
-                pass
-
-            else:
-                self.game.show_main_bg(self.screen)
-                self.game.show_main_menu(self.screen)
-                self.game.show_cursor(self.screen)
+            # This is the main menu loop
+            self.game.show_main_bg(self.screen)
+            self.game.show_main_menu(self.screen)
+            self.game.show_cursor(self.screen)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
