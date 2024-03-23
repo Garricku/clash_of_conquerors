@@ -262,19 +262,6 @@ class Game():
         scaled_bg = pygame.transform.scale(bg_img, (self.WIN_WIDTH, self.WIN_HEIGHT))
         surface.blit(scaled_bg, (0, 0))
 
-    def show_chessboard(self, surface):
-        """Displays the chessboard"""
-        # Calculate the starting position to center the chessboard
-        start_x = (self.WIN_WIDTH - COLS * SQUARE) // 2
-        start_y = (self.WIN_HEIGHT - ROWS * SQUARE) // 2
-
-        # Create the chessboard
-        for row in range(ROWS):
-            for col in range(COLS):
-                x, y = start_x + col * SQUARE, start_y + row * SQUARE
-                color = (0, 0, 0) if (row + col) % 2 == 0 else (255, 255, 255)
-                pygame.draw.rect(surface, color, (x, y, SQUARE, SQUARE))
-
     def show_profiles(self, surface):
         """Displays player and opponent profiles"""
         opponent_img = pygame.image.load('assets/borders/opponent_img.png')
