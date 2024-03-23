@@ -5,4 +5,3 @@
 # Chess board dimensions
 ROWS = 8
 COLS = 8
-SQUARE = 70
