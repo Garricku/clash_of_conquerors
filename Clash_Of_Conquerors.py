@@ -7,6 +7,7 @@ import sys
 from const import *
 from game import Game
 from chess import Chess
+from chess_piece import ChessPiece
 """Import the constants and the Game class"""
 
 
@@ -17,6 +18,7 @@ class Main(Game):
         pygame.init()
         self.game = Game()
         self.chess = Chess()
+        self.piece = ChessPiece()
         self.screen = pygame.display.set_mode((self.game.WIN_WIDTH, self.game.WIN_HEIGHT), pygame.FULLSCREEN)
         pygame.display.set_caption("Clash Of Conquerors")
         # Load and set the icon

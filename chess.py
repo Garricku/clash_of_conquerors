@@ -2,7 +2,6 @@
 """The chess game logic module Chess class"""
 
 import pygame
-import time
 
 from const import *
 """Import the constants"""
