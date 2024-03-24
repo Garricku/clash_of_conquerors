@@ -23,7 +23,6 @@ class Main(Game):
         icon_image = pygame.image.load('assets/icons/coc_icon_bigger.png')
         pygame.display.set_icon(icon_image)
 
-
     def mainloop(self):
         """Main game loop"""
         while True:
