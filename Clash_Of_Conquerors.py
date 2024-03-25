@@ -40,10 +40,10 @@ class Main(Game):
 
             while self.game.play == True: # Chess game loop starts here
                 self.game.show_game_bg(self.screen)
-                #self.chess.show_chessboard(self.screen)
+                self.chess.chess_board(self.screen)
+                self.chess.draw_pieces(self.screen)
                 self.game.show_profiles(self.screen)
                 self.game.show_menu_button(self.screen)
-                #self.game.show_timer(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
