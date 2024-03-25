@@ -62,16 +62,56 @@ class Main(Game):
                     self.game.show_settings(self.screen)
                     self.game.show_cursor(self.screen)
                     pygame.display.update()
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    x_coord = event.pos[0] // 100
+                    y_coord = event.pos[1] // 100
+                    click_coords = (x_coord, y_coord)
+                    if self.turn_step <= 1:
+                        if click_coords in self.white_locations:
+                            selection = self.white_locations.index(click_coords)
+                            if self.turn_step == 0:
+                                self.turn_step = 1
+                        if click_coords in self.valid_moves and selection != 100:
+                            self.white_location[selection] = click_coords
+                            if click_coords in self.black_location:
+                                black_piece = self.black_location.index(click_coords)
+                                self.captured_pieces_white.append(self.black_pieces[black_piece])
+                                self.black_pieces.pop(black_piece)
+                                self.black_locations.pop(black_piece)
+                            black_options = self.check_options()
+                            white_options = self.check_options()
+                            turn_step = 2
+                            selection = 100
+                            valid_moves = []
+                    
+                    if self.turn_step > 1:
+                        if click_coords in self.black_locations:
+                            selection = self.black_locations.index(click_coords)
+                            if self.turn_step == 2:
+                                self.turn_step == 3
+                        if click_coords in self.valid_moves and selection != 100:
+                            self.black_location[selection] = click_coords
+                            if click_coords in self.white_location:
+                                white_piece = self.white_location.index(click_coords)
+                                self.captured_pieces_black.append(self.white_pieces[white_piece])
+                                self.white_pieces.pop(white_piece)
+                                self.white_locations.pop(white_piece)
+                            black_options = self.check_options()
+                            white_options = self.check_options()
+                            turn_step = 0
+                            selection = 80
+                            valid_moves = []
 
             # This is the main menu loop
             self.game.show_main_bg(self.screen)
             self.game.show_main_menu(self.screen)
             self.game.show_cursor(self.screen)
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
 
             pygame.display.update()
 
