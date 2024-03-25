@@ -3,6 +3,7 @@
 
 import pygame
 import sys
+import time
 
 from const import *
 """Imports the constants"""
@@ -19,6 +20,7 @@ class Game():
         screen_info = pygame.display.Info()
         self.WIN_WIDTH = screen_info.current_w
         self.WIN_HEIGHT = screen_info.current_h
+        self.t = 10
 
     def get_win_width(self):
         """Returns the window width"""
@@ -226,8 +228,8 @@ class Game():
     def show_tutorial(self, surface):
         """Display the how to play screen"""
         font = pygame.font.Font('freesansbold.ttf', 32)
-        settings_display = pygame.image.load('assets/borders/timer_border_2.png')
-        scaled_setts = pygame.transform.scale(settings_display, (self.WIN_WIDTH, self.WIN_HEIGHT - 70))
+        #settings_display = pygame.image.load('assets/borders/timer_border_2.png')
+        #scaled_setts = pygame.transform.scale(settings_display, (self.WIN_WIDTH, self.WIN_HEIGHT - 70))
         underline_back = pygame.image.load('assets/menus/underline.png')
         underline_back.set_alpha(0)
         menu_back = font.render("RETURN", True, (160, 160, 160), None)
@@ -235,9 +237,12 @@ class Game():
         back_rect.center = (self.WIN_WIDTH // 2, self.WIN_HEIGHT // 2 + 210)
         back_line = menu_back.get_rect()
         back_line.center = (self.WIN_WIDTH // 2 - 19, self.WIN_HEIGHT // 2 + 235)
+        tutor_image = pygame.image.load('assets/menus/tutorial_content.png')
+        scaled_tutor = pygame.transform.scale(tutor_image, (self.WIN_WIDTH - 200, self.WIN_HEIGHT - 300))
 
-        surface.blit(scaled_setts, (0, 50))
+        #surface.blit(scaled_setts, (0, 50))
         surface.blit(menu_back, back_rect)
+        surface.blit(scaled_tutor, ((self.WIN_WIDTH - scaled_tutor.get_width()) // 2, (self.WIN_HEIGHT - scaled_tutor.get_height()) // 2.5))
 
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -265,30 +270,40 @@ class Game():
     def show_profiles(self, surface):
         """Displays player and opponent profiles"""
         opponent_img = pygame.image.load('assets/borders/opponent_img.png')
-        player_img = pygame.image.load('assets/borders/player_img.png')
-        player_x = (self.WIN_WIDTH - player_img.get_width()) + 30
-        player_y = (self.WIN_HEIGHT - player_img.get_height()) + 70
+        scale_op_border = pygame.transform.scale(opponent_img, (220, 180))
+        player_img = pygame.image.load('assets/borders/opponent_img.png')
+        scale_p_border = pygame.transform.scale(player_img, (220, 190))
+        player_x = (self.WIN_WIDTH - player_img.get_width() + 55)
+        player_y = (self.WIN_HEIGHT - player_img.get_height() + 30)
 
         opponent_name_tag = pygame.image.load('assets/borders/rectangle_border.png')
-        scale_tag_opp = pygame.transform.scale(opponent_name_tag, (350, 60))
+        scale_tag_opp = pygame.transform.scale(opponent_name_tag, (200, 90))
         player_name_tag = pygame.image.load('assets/borders/rectangle_border.png')
-        scale_tag_play = pygame.transform.scale(player_name_tag, (350, 60))
-        dag_x = (self.WIN_WIDTH - scale_tag_play.get_width()) - 130
-        dag_y = (self.WIN_HEIGHT - scale_tag_play.get_height())
+        scale_tag_play = pygame.transform.scale(player_name_tag, (200, 90))
+        dag_x = (self.WIN_WIDTH - scale_tag_play.get_width()) + 15
+        dag_y = (self.WIN_HEIGHT - scale_tag_play.get_height()) + 20
 
-        op_profile_img = pygame.image.load('assets/profile_pictures/profile_default.png')
-        scale_op_pic = pygame.transform.scale(op_profile_img, (150, 150))
+        op_profile_img = pygame.image.load('assets/profile_pictures/profile_default_2.png')
+        scale_op_pic = pygame.transform.scale(op_profile_img, (130, 120))
         pl_profile_img = pygame.image.load('assets/profile_pictures/profile_default_2.png')
-        scale_ppic = pygame.transform.scale(pl_profile_img, (150, 150))
-        ppic_x = (self.WIN_WIDTH - scale_ppic.get_width()) - 20
-        ppic_y = (self.WIN_HEIGHT - scale_ppic.get_height())
+        scale_ppic = pygame.transform.scale(pl_profile_img, (130, 120))
+        ppic_x = (self.WIN_WIDTH - scale_ppic.get_width()) - 18
+        ppic_y = (self.WIN_HEIGHT - scale_ppic.get_height()) - 65
 
-        surface.blit(scale_op_pic, (20, -20))
+        # Render the text
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text_surface_op = font.render("AI Bot", True, (255, 255, 255))
+        text_surface_player = font.render("Player", True, (255, 255, 255))
+
+        surface.blit(scale_op_pic, (18, 20))
         surface.blit(scale_ppic, (ppic_x, ppic_y))
-        surface.blit(scale_tag_opp, (130, 7))
+        surface.blit(scale_tag_opp, (-20, 125))
         surface.blit(scale_tag_play, (dag_x, dag_y))
-        surface.blit(opponent_img, (-30, -70))
-        surface.blit(player_img, (player_x, player_y))
+        surface.blit(scale_op_border, (-30, -10))
+        surface.blit(scale_p_border, (player_x, player_y))
+        # Blit the text surface onto the screen
+        surface.blit(text_surface_op, (30, 155))
+        surface.blit(text_surface_player, (self.WIN_WIDTH - 135, self.WIN_HEIGHT - 43))
 
     def show_timer(self, surface):
         """Displays the timer"""
@@ -389,3 +404,19 @@ class Game():
         else:
             underline_continue.set_alpha(0)
             surface.blit(underline_continue, continue_line)
+
+    def _countdown(self, surface):
+        while self.t:
+            mins, secs = divmod(self.t, 60)
+            timer = f"{mins:02d}:{secs:02d}"  # Format as "minutes:seconds"
+            font = pygame.font.Font('freesansbold.ttf', 32)
+            time_text = font.render(timer, True, (255, 255, 255))
+            surface.blit(time_text, (45, self.WIN_HEIGHT - 220))
+            time.sleep(1)  # Wait for 1 second
+            self.t -= 1
+
+    def show_tour_bg(self, surface):
+        """Shows the tutorial back ground"""
+        bg_img = pygame.image.load('assets/title_screens/title_coc_0.png')
+        scaled_bg = pygame.transform.scale(bg_img, (self.WIN_WIDTH, self.WIN_HEIGHT))
+        surface.blit(scaled_bg, (0, 0))
