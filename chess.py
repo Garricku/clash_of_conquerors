@@ -101,8 +101,8 @@ class Chess():
                 surface.blit(self.white_images[index], (self.white_locations[i][0] * 80 + 360, self.white_locations[i][1] * 100 + 60))
             if self.turn_step < 2:
                 if self.selection == i:
-                    pygame.draw.rect(surface, 'purple', [self.white_locations[i][0] * 100 + 1, self.white_locations[i][1] * 100 + 1,
-                                                    100, 100], 2)
+                    pygame.draw.rect(surface, 'red', [self.white_locations[i][0] * 100 + 1, self.white_locations[i][1] * 100 + 1,
+                                                    80, 80], 2)
 
         for i in range(len(self.black_pieces)):
             index = self.piece_list.index(self.black_pieces[i])
@@ -113,4 +113,4 @@ class Chess():
             if self.turn_step >= 2:
                 if self.selection == i:
                     pygame.draw.rect(surface, 'red', [self.black_locations[i][0] * 100 + 1, self.black_locations[i][1] * 100 + 1,
-                                                    100, 100], 2)
+                                                    80, 80], 2)
