@@ -51,17 +51,6 @@ timer_border = pygame.image.load('assets/borders/rectangle_border.png')
 scale_timer = pygame.transform.scale(timer_border, (180, 140))
 timer_y = (win_height - scale_timer.get_height()) -80
 
-# Chess pieces
-w_king = pygame.image.load('assets/chess_pieces/white_king.png')
-scale_w_king = pygame.transform.scale(w_king, (85, 70))
-col_4 = 248
-row_1 = 404
-
-w_pawn = pygame.image.load('assets/chess_pieces/white_pawn.png')
-scale_w_pawn = pygame.transform.scale(w_pawn, (85, 70))
-col_3 = 220
-row_3 = 404
-
 pygame.init()
 
 # Set game window
@@ -142,13 +131,13 @@ def chess_board():
         column = i % 4
         row = i // 4
         if row % 2 == 0:
-            pygame.draw.rect(screen, 'white', [850 - (column * 180), 120 + (row * 60), 60, 60])
+            pygame.draw.rect(screen, 'white', [850 - (column * 150), 65 + (row * 75), 75, 75])
         else:
-            pygame.draw.rect(screen, 'white', [950 - (column * 180), 120 + (row * 60), 60, 60])
+            pygame.draw.rect(screen, 'white', [950 - (column * 160), 65 + (row * 75), 75, 75])
         if row % 2 == 1:
-            pygame.draw.rect(screen, 'black', [850 - (column * 180), 120 + (row * 60), 60, 60])
+            pygame.draw.rect(screen, 'black', [850 - (column * 150), 65 + (row * 75), 75, 75])
         else:
-            pygame.draw.rect(screen, 'black', [950 - (column * 180), 120 + (row * 60), 60, 60])
+            pygame.draw.rect(screen, 'black', [950 - (column * 160), 65 + (row * 75), 75, 75])
 
 def draw_pieces():
     for i in range(len(white_pieces)):
@@ -397,12 +386,6 @@ while True:
 
     # Draw background
     screen.blit(scaled_bg, (0, 0))
-
-    # Draw chessboard
-
-    # Draw chess pieces
-    screen.blit(scale_w_pawn, (row_3, col_3))
-    screen.blit(scale_w_king, (row_1, col_4))
 
     # Player and opponent profiles
     screen.blit(scale_op_pic, (20, -20))
