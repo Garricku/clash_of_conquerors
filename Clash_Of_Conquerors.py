@@ -7,7 +7,6 @@ import sys
 from const import *
 from game import Game
 from chess import Chess
-#from chess_piece import ChessPiece
 """Import the constants and the Game class"""
 
 
@@ -18,7 +17,6 @@ class Main(Game):
         pygame.init()
         self.game = Game()
         self.chess = Chess()
-        #self.piece = ChessPiece()
         self.screen = pygame.display.set_mode((self.game.WIN_WIDTH, self.game.WIN_HEIGHT))
         pygame.display.set_caption("Clash Of Conquerors")
         # Load and set the icon
@@ -35,19 +33,17 @@ class Main(Game):
                 pygame.display.update()
 
             while self.game.help == True: # Tutorial loop
-                self.game.show_menu_bg(self.screen)
+                self.game.show_tour_bg(self.screen)
                 self.game.show_tutorial(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
             while self.game.play == True: # Chess game loop starts here
                 self.game.show_game_bg(self.screen)
-                #self.chess.show_chessboard(self.screen)
                 self.chess.chess_board(self.screen)
                 self.chess.draw_pieces(self.screen)
                 self.game.show_profiles(self.screen)
                 self.game.show_menu_button(self.screen)
-                self.game.show_timer(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
