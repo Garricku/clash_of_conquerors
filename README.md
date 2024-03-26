@@ -132,27 +132,15 @@ We welcome contributions from the community! Whether you’re a developer, desig
 
 1. Fork the Repository
 Start by forking our repository on GitHub. This creates a copy of the project under your account.
+
 2. Clone Your Fork
 Clone your forked repository to your local machine using git clone.
+
 3. Create a New Branch
 Before making any changes, create a new branch for your feature or bug fix:
 git checkout -b my-feature
-4. Make Changes
-Work on your feature or bug fix. Write clean code and follow our coding conventions.
-5. Commit and Push
-Commit your changes with descriptive messages:
-<ul>
-<li>
-git add .
-</li>
-<li>
-git commit -m "Add new feature: XYZ"
-</li>
-<li>
-git push origin my-feature
-</li>
-</ul>
-6. Submit a Pull Request (PR)
+
+4. Submit a Pull Request (PR)
 <ul>
 <li>
 Go to the original repository on GitHub.
@@ -165,22 +153,6 @@ Select your branch and describe your changes.
 </li>
 <li>
 Our team will review your PR and provide feedback.
-</li>
-<li>
-7. Code Reviews
-Be open to feedback during code reviews. Address any comments and improve your code.
-</li>
-<li>
-8. Issue Reporting
-If you find a bug or have an idea for an enhancement, open an issue on GitHub.
-Provide clear steps to reproduce the issue or describe your proposed enhancement.
-</li>
-<li>
-9. Spread the Word
-Share our project with others! Encourage more people to contribute and use Clash of Conquerors.
-</li>
-<li>
-10. Be Respectful!
 </li>
 </ul>
 
