@@ -166,15 +166,23 @@ Select your branch and describe your changes.
 <li>
 Our team will review your PR and provide feedback.
 </li>
-</ul>
+<li>
 7. Code Reviews
 Be open to feedback during code reviews. Address any comments and improve your code.
+</li>
+<li>
 8. Issue Reporting
 If you find a bug or have an idea for an enhancement, open an issue on GitHub.
 Provide clear steps to reproduce the issue or describe your proposed enhancement.
+</li>
+<li>
 9. Spread the Word
 Share our project with others! Encourage more people to contribute and use Clash of Conquerors.
+</li>
+<li>
 10. Be Respectful!
+</li>
+</ul>
 
 <h4>Treat fellow contributors with respect and kindness. We’re all here to learn and collaborate.</h4>
 <h2>Let’s build Clash of Conquerors together! 🚀🎮</h2>
