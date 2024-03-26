@@ -32,22 +32,22 @@ information.
 </p>
 <h2>Project Structure:</h2>
 
-Clash_Of_Conqurors/
-│   README.md
-│   Clash_of_Conquerors.py
-│   game.py
-│   chess.py
-│   const.py
-│
-└───assets/
-        ├───icons/
-        ├───cursors/
-        ├───backgrounds/
-        ├───buttons/
-        ├───title_screens/
-        ├───menus/
-        ├───borders/
-        ├───chess_pieces/
+Clash_Of_Conqurors/<br>
+│   README.md<br>
+│   Clash_of_Conquerors.py<br>
+│   game.py<br>
+│   chess.py<br>
+│   const.py<br>
+│<br>
+└───assets/<br>
+        ├───icons/<br>
+        ├───cursors/<br>
+        ├───backgrounds/<br>
+        ├───buttons/<br>
+        ├───title_screens/<br>
+        ├───menus/<br>
+        ├───borders/<br>
+        ├───chess_pieces/<br>
         └───chess_board/
 
 <h3>Here’s a brief explanation of each component:</h3>
@@ -190,9 +190,15 @@ Garrick Larson Potts (Ricki Potts): Ricki’s creativity, design flair, and a pa
 Wallace Lazaro: Wallace fearlessly delved into the codebase, identifying and squashing bugs like a seasoned detective. His thorough testing ensured that Clash of Conquerors remained stable and glitch-free. Wallace’s positive attitude and willingness to collaborate made our development process smoother. He patiently explained intricate concepts to the team, fostering a learning environment.
 
 <h2>Authors:</h2>
+<p>
 Wallace Lazaro: https://github.com/wallace-21
+</p>
+<p>
 Chideraa Ozubu: https://github.com/xillere
+</p>
+<p>
 Garrick Larson Potts (Ricki Potts): https://github.com/Garricku
+</p>
 
 <h2>Technologies Used:</h2>
 <p>
