@@ -3,9 +3,10 @@
 
 import pygame
 import sys
-import time
+# import time
 
 from const import *
+from chess import Chess
 """Imports the constants"""
 
 
@@ -20,7 +21,8 @@ class Game():
         screen_info = pygame.display.Info()
         self.WIN_WIDTH = screen_info.current_w
         self.WIN_HEIGHT = screen_info.current_h
-        self.t = 10
+        self.chess = Chess()
+        # self.t = 10 This was meant for the timer, but issues arise
 
     def get_win_width(self):
         """Returns the window width"""
@@ -198,6 +200,10 @@ class Game():
 
     def show_settings(self, surface):
         """Displays the settings menu"""
+        set_off = pygame.image.load('assets/buttons/settings_off.png')
+        scale_off = pygame.transform.scale(set_off, (40, 40))
+        set_on = pygame.image.load('assets/buttons/settings_on.png')
+        scale_on = pygame.transform.scale(set_on, (40, 40))
         font = pygame.font.Font('freesansbold.ttf', 32)
         settings_display = pygame.image.load('assets/borders/timer_border_2.png')
         scaled_setts = pygame.transform.scale(settings_display, (self.WIN_WIDTH, self.WIN_HEIGHT - 70))
@@ -209,14 +215,105 @@ class Game():
         back_line = menu_back.get_rect()
         back_line.center = (self.WIN_WIDTH // 2 - 19, self.WIN_HEIGHT // 2 + 235)
 
+        # Color options for themes
+        # these are the headings
+        themes = font.render('THEMES', True, (160, 160, 160), None)
+        themes_rect = themes.get_rect()
+        themes_rect.center = (self.WIN_WIDTH // 2, self.WIN_HEIGHT // 2 - 170)
+        color_1 = font.render('Color 1:', True, (160, 160, 160), None)
+        color_1_rect = color_1.get_rect()
+        color_1_rect.center = (self.WIN_WIDTH // 2, self.WIN_HEIGHT // 2 - 90)
+        color_2 = font.render('Color 2:', True, (160, 160, 160), None)
+        color_2_rect = color_2.get_rect()
+        color_2_rect.center = (self.WIN_WIDTH // 2, self.WIN_HEIGHT // 2 + 20)
+
+        # Theses are the options
+        white_text = font.render('White', True, (160, 160, 160), None)
+        white_rect = white_text.get_rect()
+        white_rect.center = (self.WIN_WIDTH // 2 - 300, self.WIN_HEIGHT // 2 - 40)
+        pink_text = font.render('Pink', True, (160, 160, 160), None)
+        pink_rect = pink_text.get_rect()
+        pink_rect.center = (self.WIN_WIDTH // 2, self.WIN_HEIGHT // 2 - 40)
+        blue_text = font.render('Blue', True, (160, 160, 160), None)
+        blue_rect = blue_text.get_rect()
+        blue_rect.center = (self.WIN_WIDTH // 2 + 300, self.WIN_HEIGHT // 2 - 40)
+        black_text = font.render('Black', True, (160, 160, 160), None)
+        black_rect = black_text.get_rect()
+        black_rect.center = (self.WIN_WIDTH // 2 - 300, self.WIN_HEIGHT // 2 + 70)
+        purple_text = font.render('Purple', True, (160, 160, 160), None)
+        purple_rect = purple_text.get_rect()
+        purple_rect.center = (self.WIN_WIDTH // 2, self.WIN_HEIGHT // 2 + 70)
+        red_text = font.render('Red', True, (160, 160, 160), None)
+        red_rect = red_text.get_rect()
+        red_rect.center = (self.WIN_WIDTH // 2 + 300, self.WIN_HEIGHT // 2 + 70)
+
+
+        # Display them all
         surface.blit(scaled_setts, (0, 50))
         surface.blit(menu_back, back_rect)
+        surface.blit(themes, themes_rect)
+        surface.blit(color_1, color_1_rect)
+        surface.blit(white_text, white_rect)
+        surface.blit(pink_text, pink_rect)
+        surface.blit(blue_text, blue_rect)
+        surface.blit(color_2, color_2_rect)
+        surface.blit(black_text, black_rect)
+        surface.blit(purple_text, purple_rect)
+        surface.blit(red_text, red_rect)
+
+        if self.chess.color_1 == (255, 255, 255):
+            surface.blit(scale_on, (self.WIN_WIDTH // 2 - 150, self.WIN_HEIGHT // 2 - 55))
+        else:
+            surface.blit(scale_off, (self.WIN_WIDTH // 2 - 150, self.WIN_HEIGHT // 2 - 55))
+        
+        if self.chess.color_1 == (255, 192, 203):
+            surface.blit(scale_on, (self.WIN_WIDTH // 2 + 100, self.WIN_HEIGHT // 2 - 55))
+        else:
+            surface.blit(scale_off, (self.WIN_WIDTH // 2 + 100, self.WIN_HEIGHT // 2 - 55))
+
+        if self.chess.color_1 == (60, 60, 255):
+            surface.blit(scale_on, (self.WIN_WIDTH // 2 + 400, self.WIN_HEIGHT // 2 - 55))
+        else:
+            surface.blit(scale_off, (self.WIN_WIDTH // 2 + 400, self.WIN_HEIGHT // 2 - 55))
+
+        if self.chess.color_2 == (0, 0, 0):
+            surface.blit(scale_on, (self.WIN_WIDTH // 2 - 150, self.WIN_HEIGHT // 2 + 55))
+        else:
+            surface.blit(scale_off, (self.WIN_WIDTH // 2 - 150, self.WIN_HEIGHT // 2 + 55))
+
+        if self.chess.color_2 == (128, 0, 128):
+            surface.blit(scale_on, (self.WIN_WIDTH // 2 + 100, self.WIN_HEIGHT // 2 + 55))
+        else:
+            surface.blit(scale_off, (self.WIN_WIDTH // 2 + 100, self.WIN_HEIGHT // 2 + 55))
+
+        if self.chess.color_2 == (255, 60, 60):
+            surface.blit(scale_on, (self.WIN_WIDTH // 2 + 400, self.WIN_HEIGHT // 2 + 55))
+        else:
+            surface.blit(scale_off, (self.WIN_WIDTH // 2 + 400, self.WIN_HEIGHT // 2 + 55))
 
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if back_rect.collidepoint(event.pos):
                     # Button clicked!
                     self.set_opt(False)
+                
+                if white_rect.collidepoint(event.pos):
+                    self.chess.color_1_to_white()
+
+                if pink_rect.collidepoint(event.pos):
+                    self.chess.color_1_to_pink()
+
+                if blue_rect.collidepoint(event.pos):
+                    self.chess.color_1_to_blue()
+
+                if black_rect.collidepoint(event.pos):
+                    self.chess.color_2_to_black()
+
+                if purple_rect.collidepoint(event.pos):
+                    self.chess.color_2_to_purple()
+
+                if red_rect.collidepoint(event.pos):
+                    self.chess.color_2_to_red()
 
         if back_rect.collidepoint(pygame.mouse.get_pos()):
             underline_back.set_alpha(255)
@@ -406,13 +503,14 @@ class Game():
             surface.blit(underline_continue, continue_line)
 
     def _countdown(self, surface):
+        """Timer but it does not work yet issues with fps"""
         while self.t:
             mins, secs = divmod(self.t, 60)
             timer = f"{mins:02d}:{secs:02d}"  # Format as "minutes:seconds"
             font = pygame.font.Font('freesansbold.ttf', 32)
             time_text = font.render(timer, True, (255, 255, 255))
             surface.blit(time_text, (45, self.WIN_HEIGHT - 220))
-            time.sleep(1)  # Wait for 1 second
+            # time.sleep(1)  # Wait for 1 second
             self.t -= 1
 
     def show_tour_bg(self, surface):
