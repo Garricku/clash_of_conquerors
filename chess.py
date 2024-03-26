@@ -15,6 +15,8 @@ class Chess():
         self.WIN_WIDTH = screen_info.current_w
         self.WIN_HEIGHT = screen_info.current_h
         self.chess_theme = 'assets/chess_board/chess_table_v4.png'
+        self.color_1 = (255, 255, 255)
+        self.color_2 = (0, 0, 0)
 
     white_pieces = ['rook', 'knight', 'bishop', 'king', 'queen', 'bishop', 'knight', 'rook',
                 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn']
@@ -87,7 +89,7 @@ class Chess():
         for i in range(8):
             for j in range(8):
             # Determine the color of the square based on its position
-                square_color = 'white' if (i + j) % 2 == 0 else 'black'
+                square_color = self.color_1 if (i + j) % 2 == 0 else self.color_2
             
             # Draw the square
                 pygame.draw.rect(surface, square_color, [board_x + j * square_size, board_y + i * square_size, square_size, square_size])
@@ -114,3 +116,27 @@ class Chess():
                 if self.selection == i:
                     pygame.draw.rect(surface, 'red', [self.black_locations[i][0] * 100 + 1, self.black_locations[i][1] * 100 + 1,
                                                     100, 100], 2)
+
+    def color_1_to_white(self):
+        """Changes one of the color pair of the tiles white by default"""
+        self.color_1 = (255, 255, 255)
+
+    def color_1_to_pink(self):
+        """Changes one of the color pair of the tiles white by default"""
+        self.color_1 = (255, 192, 203)
+
+    def color_1_to_blue(self):
+        """Changes one of the color pair of the tiles white by default"""
+        self.color_1 = (60, 60, 255)
+
+    def color_2_to_black(self):
+        """Changes one of the color pair of the tiles black by default"""
+        self.color_2 = (0, 0, 0)
+
+    def color_2_to_purple(self):
+        """Changes one of the color pair of the tiles black by default"""
+        self.color_2 = (128, 0, 128)
+
+    def color_2_to_red(self):
+        """Changes one of the color pair of the tiles black by default"""
+        self.color_2 = (255, 60, 60)
