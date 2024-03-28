@@ -6,7 +6,7 @@ class Knight(Piece):
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
-		img_path = 'assets/chess_pieces/' + color[0] + '_knight.png'
+		img_path = 'assets/chess_pieces/' + color[0] + '_knight_front.png'
 		self.img = pygame.image.load(img_path)
 		self.img = pygame.transform.scale(self.img, (board.square_width - 20, board.square_height - 20))
 
