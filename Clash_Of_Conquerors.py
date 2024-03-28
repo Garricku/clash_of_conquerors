@@ -7,7 +7,7 @@ import sys
 from const import *
 from game import Game
 from chess import Board
-#from chess_piece import ChessPiece
+from chess import Chess
 """Import the constants and the Game class"""
 
 
@@ -18,7 +18,7 @@ class Main(Game):
         """initialize game and display the screen"""
         pygame.init()
         self.game = Game()
-        #self.piece = ChessPiece()
+        self.chess = Chess()
         self.screen = pygame.display.set_mode((self.game.WIN_WIDTH, self.game.WIN_HEIGHT))
         pygame.display.set_caption("Clash Of Conquerors")
         # Load and set the icon
@@ -38,19 +38,34 @@ class Main(Game):
                 pygame.display.update()
 
             while self.game.help == True: # Tutorial loop
-                self.game.show_menu_bg(self.screen)
+                self.game.show_tour_bg(self.screen)
                 self.game.show_tutorial(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
             while self.game.play == True: # Chess game loop starts here
+                mx, my = pygame.mouse.get_pos()
+	              for event in pygame.event.get():
+		                if event.type == pygame.QUIT:
+                        self.game.play == False
+                        pygame.quit()
+                        sys.exit()
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+			                  if event.button == 1:
+				                    board.handle_click(mx, my)
+                if board.is_in_checkmate('black'):
+		                print('White wins!')
+		                self.game.play = False
+	              elif board.is_in_checkmate('white'):
+		                print('Black wins!')
+		                self.game.play = False
+
+	              draw(screen)        
                 self.game.show_game_bg(self.screen)
-                #self.chess.show_chessboard(self.screen)
                 self.chess.Board(self.screen)
                 self.chess.draw_pieces(self.screen)
                 self.game.show_profiles(self.screen)
                 self.game.show_menu_button(self.screen)
-                self.game.show_timer(self.screen)
                 self.game.show_cursor(self.screen)
                 WINDOW_SIZE = (1000, 1000)
                 board = Board(WINDOW_SIZE[0], WINDOW_SIZE[1])
@@ -81,19 +96,9 @@ class Main(Game):
 
             pygame.display.update()
 
-'''
-import pygame
-
-from chess import Board
-
-pygame.init()
-
-WINDOW_SIZE = (600, 600)
-screen = pygame.display.set_mode(WINDOW_SIZE)
-
-board = Board(WINDOW_SIZE[0], WINDOW_SIZE[1])
 
 def draw(display):
+  """The draw method"""
 	display.fill('white')
 
 	board.draw(display)
@@ -101,28 +106,6 @@ def draw(display):
 	pygame.display.update()
 
 
-running = True
-while running:
-	mx, my = pygame.mouse.get_pos()
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			running = False
-
-		elif event.type == pygame.MOUSEBUTTONDOWN:
-			if event.button == 1:
-				board.handle_click(mx, my)
-
-	if board.is_in_checkmate('black'):
-		print('White wins!')
-		running = False
-	elif board.is_in_checkmate('white'):
-		print('Black wins!')
-		running = False
-
-	draw(screen)
-	'''
-
-
 if __name__ == "__main__":
     main = Main()
-    main.mainloop()'''
+    main.mainloop()
