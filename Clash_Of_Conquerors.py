@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 """Main - Clash of Conquerors game"""
 
-import pygame
+'''import pygame
 import sys
 
 from const import *
 from game import Game
+from chess import Board
 from chess import Chess
 """Import the constants and the Game class"""
 
 
 class Main(Game):
     """Main class for game C.O.C."""
+    
     def __init__(self):
         """initialize game and display the screen"""
         pygame.init()
@@ -22,6 +24,9 @@ class Main(Game):
         # Load and set the icon
         icon_image = pygame.image.load('assets/icons/coc_icon_bigger.png')
         pygame.display.set_icon(icon_image)
+    
+    def draw(display):
+        display.fill('white')
 
     def mainloop(self):
         """Main game loop"""
@@ -39,12 +44,32 @@ class Main(Game):
                 pygame.display.update()
 
             while self.game.play == True: # Chess game loop starts here
+                mx, my = pygame.mouse.get_pos()
+	              for event in pygame.event.get():
+		                if event.type == pygame.QUIT:
+                        self.game.play == False
+                        pygame.quit()
+                        sys.exit()
+                    elif event.type == pygame.MOUSEBUTTONDOWN:
+			                  if event.button == 1:
+				                    board.handle_click(mx, my)
+                if board.is_in_checkmate('black'):
+		                print('White wins!')
+		                self.game.play = False
+	              elif board.is_in_checkmate('white'):
+		                print('Black wins!')
+		                self.game.play = False
+
+	              draw(screen)        
                 self.game.show_game_bg(self.screen)
-                self.chess.chess_board(self.screen)
+                self.chess.Board(self.screen)
                 self.chess.draw_pieces(self.screen)
                 self.game.show_profiles(self.screen)
                 self.game.show_menu_button(self.screen)
                 self.game.show_cursor(self.screen)
+                WINDOW_SIZE = (1000, 1000)
+                board = Board(WINDOW_SIZE[0], WINDOW_SIZE[1])
+                board.draw(self.screen)
                 pygame.display.update()
 
                 while self.game.menu_state == True: # This is in the chess game loop
@@ -70,6 +95,15 @@ class Main(Game):
                     sys.exit()
 
             pygame.display.update()
+
+
+def draw(display):
+  """The draw method"""
+	display.fill('white')
+
+	board.draw(display)
+
+	pygame.display.update()
 
 
 if __name__ == "__main__":
