@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Main - Clash of Conquerors game"""
 
-import pygame
+'''import pygame
 import sys
 
 from const import *
@@ -81,13 +81,14 @@ class Main(Game):
 
             pygame.display.update()
 
-'''import pygame
+'''
+import pygame
 
-from data.classes.Board import Board
+from chess import Board
 
 pygame.init()
 
-WINDOW_SIZE = (1000, 1000)
+WINDOW_SIZE = (600, 600)
 screen = pygame.display.set_mode(WINDOW_SIZE)
 
 board = Board(WINDOW_SIZE[0], WINDOW_SIZE[1])
@@ -118,9 +119,10 @@ while running:
 		print('Black wins!')
 		running = False
 
-	draw(screen)'''
+	draw(screen)
+	'''
 
 
 if __name__ == "__main__":
     main = Main()
-    main.mainloop()
+    main.mainloop()'''
