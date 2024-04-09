@@ -8,8 +8,6 @@ from const import *
 from game import Game
 from chess import Chess
 from board import Board
-"""Import the constants and the Game class"""
-
 
 class Main(Game):
     """Main class for game C.O.C."""
@@ -26,29 +24,29 @@ class Main(Game):
         pygame.display.set_icon(icon_image)
         self.board = Board()
     
-    def draw(display):
-        display.fill('white')
+    def draw(self):
+        self.screen.fill('white')
 
     def mainloop(self):
         """Main game loop"""
         while True:
-            while self.game.opt == True: # Setting menu loop starts here
+            while self.game.opt: # Setting menu loop starts here
                 self.game.show_menu_bg(self.screen)
                 self.game.show_settings(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
-            while self.game.help == True: # Tutorial loop
+            while self.game.help: # Tutorial loop
                 self.game.show_tour_bg(self.screen)
                 self.game.show_tutorial(self.screen)
                 self.game.show_cursor(self.screen)
                 pygame.display.update()
 
-            while self.game.play == True: # Chess game loop starts here
+            while self.game.play: # Chess game loop starts here
                 mx, my = pygame.mouse.get_pos()
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
-                        self.game.play == False
+                        self.game.play = False
                         pygame.quit()
                         sys.exit()
                     elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -68,13 +66,13 @@ class Main(Game):
                 
                 pygame.display.update()
 
-                while self.game.menu_state == True: # This is in the chess game loop
+                while self.game.menu_state: # This is in the chess game loop
                     self.game.show_menu_bg(self.screen)
                     self.game.show_game_menu(self.screen)
                     self.game.show_cursor(self.screen)
                     pygame.display.update()
 
-                while self.game.opt == True: # This is in the menu loop of chess game loop
+                while self.game.opt: # This is in the menu loop of chess game loop
                     self.game.show_menu_bg(self.screen)
                     self.game.show_settings(self.screen)
                     self.game.show_cursor(self.screen)
@@ -91,13 +89,6 @@ class Main(Game):
                     sys.exit()
 
             pygame.display.update()
-
-
-def draw(display):
-    """The draw method"""
-    display.fill('white')
-    Chess.draw(display)
-    pygame.display.update()
 
 
 if __name__ == "__main__":
