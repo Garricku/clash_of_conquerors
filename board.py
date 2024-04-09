@@ -16,14 +16,13 @@ from const import *
 
 
 class Board:
-	def __init__(self, width=900, height=600):
+	def __init__(self, width=700, height=700):
 		self.width = width
 		self.height = height
 		self.square_width = width // 8
 		self.square_height = height // 8
 		self.selected_piece = None
 		self.turn = 'white'
-
 		self.config = [
 			['bR', 'bN', 'bB', 'bQ', 'bK', 'bB', 'bN', 'bR'],
 			['b ', 'b ', 'b ', 'b ', 'b ', 'b ', 'b ', 'b '],
