@@ -8,6 +8,8 @@ from const import *
 from game import Game
 from chess import Chess
 from board import Board
+"""Imported modules"""
+
 
 class Main(Game):
     """Main class for game C.O.C."""
@@ -25,6 +27,7 @@ class Main(Game):
         self.board = Board()
     
     def draw(self):
+        """Draws the white blocks for the chess board"""
         self.screen.fill('white')
 
     def mainloop(self):

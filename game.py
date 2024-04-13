@@ -3,8 +3,6 @@
 
 import pygame
 import sys
-# import time
-
 from const import *
 from chess import Chess
 """Imports the constants"""
@@ -25,7 +23,6 @@ class Game():
         self.menu_button = pygame.image.load('assets/buttons/menu_button_small.png')
         self.rect_menu_button = self.menu_button.get_rect()
         self.rect_menu_button.center = (self.WIN_WIDTH - 100, 100)
-        # self.t = 10 This was meant for the timer, but issues arise
 
     def get_win_width(self):
         """Returns the window width"""
@@ -328,8 +325,6 @@ class Game():
     def show_tutorial(self, surface):
         """Display the how to play screen"""
         font = pygame.font.Font('freesansbold.ttf', 32)
-        #settings_display = pygame.image.load('assets/borders/timer_border_2.png')
-        #scaled_setts = pygame.transform.scale(settings_display, (self.WIN_WIDTH, self.WIN_HEIGHT - 70))
         underline_back = pygame.image.load('assets/menus/underline.png')
         underline_back.set_alpha(0)
         menu_back = font.render("RETURN", True, (160, 160, 160), None)
@@ -340,7 +335,6 @@ class Game():
         tutor_image = pygame.image.load('assets/menus/tutorial_content.png')
         scaled_tutor = pygame.transform.scale(tutor_image, (self.WIN_WIDTH - 200, self.WIN_HEIGHT - 300))
 
-        #surface.blit(scaled_setts, (0, 50))
         surface.blit(menu_back, back_rect)
         surface.blit(scaled_tutor, ((self.WIN_WIDTH - scaled_tutor.get_width()) // 2, (self.WIN_HEIGHT - scaled_tutor.get_height()) // 2.5))
 
@@ -407,6 +401,7 @@ class Game():
 
     def show_timer(self, surface):
         """Displays the timer"""
+        #This timer causes issues with frame rate and the speed the game runs at
         timer_border = pygame.image.load('assets/borders/rectangle_border.png')
         scale_timer = pygame.transform.scale(timer_border, (180, 140))
         timer_y = (self.WIN_HEIGHT - scale_timer.get_height()) -80
