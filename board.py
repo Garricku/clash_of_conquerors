@@ -108,17 +108,20 @@ class Board:
 		y = my // self.square_height
 		clicked_square = self.get_square_from_pos((x, y))
 
-		if self.selected_piece is None:
-			if clicked_square.occupying_piece is not None:
+		if hasattr(clicked_square, 'occupying_piece'):
+			if self.selected_piece is None:
+				if clicked_square.occupying_piece is not None:
+					if clicked_square.occupying_piece.color == self.turn:
+						self.selected_piece = clicked_square.occupying_piece
+
+			elif self.selected_piece.move(self, clicked_square):
+				self.turn = 'white' if self.turn == 'black' else 'black'
+
+			elif clicked_square.occupying_piece is not None:
 				if clicked_square.occupying_piece.color == self.turn:
 					self.selected_piece = clicked_square.occupying_piece
-
-		elif self.selected_piece.move(self, clicked_square):
-			self.turn = 'white' if self.turn == 'black' else 'black'
-
-		elif clicked_square.occupying_piece is not None:
-			if clicked_square.occupying_piece.color == self.turn:
-				self.selected_piece = clicked_square.occupying_piece
+		else:
+			pass
 
 
 	def is_in_check(self, color, board_change=None): # board_change = [(x1, y1), (x2, y2)]

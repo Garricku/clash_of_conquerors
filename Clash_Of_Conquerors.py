@@ -58,6 +58,9 @@ class Main(Game):
                             elif self.board.is_in_checkmate('white'):
                                 print('Black wins!')
                                 self.game.play = False
+                            elif self.game.rect_menu_button.collidepoint(event.pos):
+                                self.game.set_menu_state(True)
+
                 self.game.show_game_bg(self.screen)
                 self.board.draw(self.screen)
                 self.game.show_profiles(self.screen)

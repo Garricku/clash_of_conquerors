@@ -22,6 +22,9 @@ class Game():
         self.WIN_WIDTH = screen_info.current_w
         self.WIN_HEIGHT = screen_info.current_h
         self.chess = Chess()
+        self.menu_button = pygame.image.load('assets/buttons/menu_button_small.png')
+        self.rect_menu_button = self.menu_button.get_rect()
+        self.rect_menu_button.center = (self.WIN_WIDTH - 100, 100)
         # self.t = 10 This was meant for the timer, but issues arise
 
     def get_win_width(self):
@@ -410,16 +413,8 @@ class Game():
         surface.blit(scale_timer, (45, timer_y))
 
     def show_menu_button(self, surface):
-        """Draw menu button and timer"""
-        menu_button = pygame.image.load('assets/buttons/menu_button_small.png')
-        rect_menu_button = menu_button.get_rect()
-        rect_menu_button.center = (self.WIN_WIDTH - 100, 100)
-        surface.blit(menu_button, rect_menu_button)
-
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if rect_menu_button.collidepoint(event.pos):
-                    self.set_menu_state(True)
+        """Draw menu button"""
+        surface.blit(self.menu_button, self.rect_menu_button)
 
     def show_game_menu(self, surface):
         """Displays the in game menu"""
