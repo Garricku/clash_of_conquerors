@@ -389,14 +389,14 @@ class Game():
         text_surface_op = font.render("AI Bot", True, (255, 255, 255))
         text_surface_player = font.render("Player", True, (255, 255, 255))
 
-        surface.blit(scale_op_pic, (18, 20))
+        surface.blit(scale_op_pic, (1000, 20))
         surface.blit(scale_ppic, (ppic_x, ppic_y))
-        surface.blit(scale_tag_opp, (-20, 125))
+        surface.blit(scale_tag_opp, (960, 125))
         surface.blit(scale_tag_play, (dag_x, dag_y))
-        surface.blit(scale_op_border, (-30, -10))
+        surface.blit(scale_op_border, (955, -10))
         surface.blit(scale_p_border, (player_x, player_y))
         # Blit the text surface onto the screen
-        surface.blit(text_surface_op, (30, 155))
+        surface.blit(text_surface_op, (1000, 155))
         surface.blit(text_surface_player, (self.WIN_WIDTH - 135, self.WIN_HEIGHT - 43))
 
     def show_timer(self, surface):
