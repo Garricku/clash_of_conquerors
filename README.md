@@ -5,7 +5,7 @@
 <h2>Introduction:</h2>
 <p>
 Welcome one and all, to the battle arena of minds and intellect! Please have a read to familiarize yourself with our project. We hope enjoy playing it and have a great time with friends and family while exercising your mind.<br>
-Checkout Ricki's blog post: https://www.linkedin.com/posts/garrick-potts-502871106_wow-what-a-ride-alx-has-really-taught-me-activity-7183451064141037569-uSfe?utm_source=share&utm_medium=member_desktop
+Checkout Ricki's blog post: https://www.linkedin.com/posts/garrick-potts-502871106_wow-what-a-ride-alx-has-really-taught-me-activity-7183451064141037569-uSfe?utm_source=share&utm_medium=member_desktop <br>Visit The Landing Page: https://wallace-21.github.io/index.html
 </p>
 <h2>Description:</h2>
 <img align="center" src="readme_pics/Screenshot 2024-03-28 202122.png" width="950" height="400">
@@ -22,7 +22,7 @@ playing a game you can enjoy.
 </p>
 <h2>Installation Instructions:</h2>
 <p>
-The game Clash Of Conquerors can be downloaded from the Landing Page of the game by clicking on the download button. After the game has been downloaded you can play it immediately without any other configurations required (most computers specifications should be ample to play this game) simply navigate to the file Clash Of Conquerors in the file downloaded and enjoy!
+The game Clash Of Conquerors can be downloaded from the Landing Page of the game by clicking on the download button. After the game has been downloaded you can play it immediately without any other configurations required (most computers specifications should be ample to play this game) simply navigate to the file Clash Of Conquerors in the file downloaded and enjoy!<br>Visit The Landing Page: https://wallace-21.github.io/index.html
 </p>
 
 <h2>Usage Overview:</h2>
