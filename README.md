@@ -3,7 +3,7 @@
 <h3>The Strategic Chess Game For Those Hungry For Victory!</h3>
 
 <h2>Description:</h2>
-<img align="center" src="readme_pics/Screenshot 2024-03-28 202122.png" width="1000" height="800">
+<img align="center" src="readme_pics/Screenshot 2024-03-28 202122.png" width="950" height="400">
 <p>
 This is a chess game designed to put your mind to the test and improve
 your ability to build strategies and think on your feet.
@@ -71,7 +71,7 @@ Clash_of_Conquerors.py: The main game file that ties everything together.
 <li>
 game.py: Contains the source code for game menus and makes the menus interactive.
 </li>
-<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="1000" height="800">
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="950" height="400">
 <li>
 chess.py: Contains the source code for the chess board and game logic.
 </li>
@@ -110,7 +110,7 @@ cursors/: Stores all the GUI cursors
 </li>
 </ul>
 <h2>Features and Functionality:</h2>
-<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="1000" height="800">
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="950" height="400">
 <ul>
 <li>
 Play - This allows you to play the chess game.
@@ -121,11 +121,11 @@ Settings - This allows you to change the colors of the tiles to help things be e
 <li>
 visible to the users preferences.
 </li>
-<img align="center" src="readme_pics/Screenshot 2024-03-26 170647.png" width="1000" height="800">
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170647.png" width="950" height="400">
 <li>
 Tutorial - This is a short explanation on how to play the game.
 </li>
-<img align="center" src="readme_pics/Screenshot 2024-03-26 170701.png" width="1000" height="800">
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170701.png" width="950" height="400">
 <li>
 Surrender - This Feature allows you to quit your current chess match.
 </li>
