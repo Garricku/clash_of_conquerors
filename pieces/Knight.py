@@ -1,8 +1,13 @@
+#!/usr/bin/python3
+"""Knight module"""
+
 import pygame
 
 from pieces.Piece import Piece
 
+
 class Knight(Piece):
+	"""Knight class that inherits from Piece"""
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
@@ -14,6 +19,7 @@ class Knight(Piece):
 
 
 	def get_possible_moves(self, board):
+		"""Gets the possible moves this chess piece can make"""
 		output = []
 		moves = [
 			(1, -2),

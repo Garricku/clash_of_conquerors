@@ -1,7 +1,13 @@
+#!/usr/bin/python3
+"""Square module"""
+
 import pygame
 
+
 class Square:
+	"""Square class of a block on the chessboard"""
 	def __init__(self, x, y, width, height):
+		"""Initializes the square class"""
 		self.x = x
 		self.y = y
 		self.width = width
@@ -27,11 +33,13 @@ class Square:
 
 
 	def get_coord(self):
+		"""gets the coordinates of a block"""
 		columns = 'abcdefgh'
 		return columns[self.x] + str(self.y + 1)
 
 
 	def draw(self, display):
+		"""Draws a rect"""
 		if self.highlight:
 			pygame.draw.rect(display, self.highlight_color, self.rect)
 		else:
