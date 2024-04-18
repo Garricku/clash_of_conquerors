@@ -1,6 +1,11 @@
+#!/usr/bin/python3
+"""Piece module"""
+
 import pygame
 
+
 class Piece:
+	"""The Piece class for chess pieces"""
 	def __init__(self, pos, color, board):
 		self.pos = pos
 		self.x = pos[0]
@@ -48,6 +53,7 @@ class Piece:
 
 
 	def get_moves(self, board):
+		"""Gets the moves of chess pieces"""
 		output = []
 		for direction in self.get_possible_moves(board):
 			for square in direction:
@@ -64,6 +70,7 @@ class Piece:
 
 
 	def get_valid_moves(self, board):
+		"""Checks if a chess piece moves is valid"""
 		output = []
 		for square in self.get_moves(board):
 			if not board.is_in_check(self.color, board_change=[self.pos, square.pos]):
@@ -74,4 +81,5 @@ class Piece:
 
 	# True for all pieces except pawn
 	def attacking_squares(self, board):
+		"""Checks if the move is an attack"""
 		return self.get_moves(board)

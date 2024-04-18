@@ -1,8 +1,13 @@
+#!/usr/bin/python3
+"""Pawn module"""
+
 import pygame
 
 from pieces.Piece import Piece
 
+
 class Pawn(Piece):
+	"""Pawn class that inherits from Piece"""
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
@@ -14,6 +19,7 @@ class Pawn(Piece):
 
 
 	def get_possible_moves(self, board):
+		"""Gets the possible moves this chess piece can make"""
 		output = []
 		moves = []
 
@@ -39,6 +45,7 @@ class Pawn(Piece):
 
 
 	def get_moves(self, board):
+		"""Gets the possible moves this chess piece can make for double step"""
 		output = []
 		for square in self.get_possible_moves(board):
 			if square.occupying_piece != None:
@@ -81,6 +88,7 @@ class Pawn(Piece):
 		return output
 
 	def attacking_squares(self, board):
+		"""Handles the diagonal attacking"""
 		moves = self.get_moves(board)
 		# return the diagonal moves 
 		return [i for i in moves if i.x != self.x]

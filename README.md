@@ -2,7 +2,13 @@
 <h2>Be A Conqueror!</h2>
 <h3>The Strategic Chess Game For Those Hungry For Victory!</h3>
 
+<h2>Introduction:</h2>
+<p>
+Welcome one and all, to the battle arena of minds and intellect! Please have a read to familiarize yourself with our project. We hope enjoy playing it and have a great time with friends and family while exercising your mind.<br>
+Checkout Ricki's blog post: https://www.linkedin.com/posts/garrick-potts-502871106_wow-what-a-ride-alx-has-really-taught-me-activity-7183451064141037569-uSfe?utm_source=share&utm_medium=member_desktop <br>Visit The Landing Page: https://wallace-21.github.io/index.html
+</p>
 <h2>Description:</h2>
+<img align="center" src="readme_pics/Screenshot 2024-03-28 202122.png" width="950" height="400">
 <p>
 This is a chess game designed to put your mind to the test and improve
 your ability to build strategies and think on your feet.
@@ -16,7 +22,7 @@ playing a game you can enjoy.
 </p>
 <h2>Installation Instructions:</h2>
 <p>
-The game Clash Of Conquerors can be downloaded from the Landing Page of the game by clicking on the download button. After the game has been downloaded you can play it immediately without any other configurations required (most computers specifications should be ample to play this game) simply navigate to the file Clash Of Conquerors in the file downloaded and enjoy!
+The game Clash Of Conquerors can be downloaded from the Landing Page of the game by clicking on the download button. After the game has been downloaded you can play it immediately without any other configurations required (most computers specifications should be ample to play this game) simply navigate to the file Clash Of Conquerors in the file downloaded and enjoy!<br>Visit The Landing Page: https://wallace-21.github.io/index.html
 </p>
 
 <h2>Usage Overview:</h2>
@@ -33,6 +39,14 @@ information.
 <h2>Project Structure:</h2>
 
 Clash_Of_Conqurors/<br>
+│   pieces<br>
+│   .gitignore<br>
+│   readme_pics<br>
+│───web_static/<br>
+        ├───scripts/<br>
+        ├───styles/<br>
+        ├───index.html<br>
+│   README.md<br>
 │   README.md<br>
 │   Clash_of_Conquerors.py<br>
 │   game.py<br>
@@ -48,6 +62,7 @@ Clash_Of_Conqurors/<br>
         ├───menus/<br>
         ├───borders/<br>
         ├───chess_pieces/<br>
+        ├───profile_pictures/<br>
         └───chess_board/
 
 <h3>Here’s a brief explanation of each component:</h3>
@@ -99,6 +114,7 @@ cursors/: Stores all the GUI cursors
 </li>
 </ul>
 <h2>Features and Functionality:</h2>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="950" height="400">
 <ul>
 <li>
 Play - This allows you to play the chess game.
@@ -112,9 +128,11 @@ visible to the users preferences.
 <li>
 Tutorial - This is a short explanation on how to play the game.
 </li>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170647.png" width="950" height="400">
 <li>
 Surrender - This Feature allows you to quit your current chess match.
 </li>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170701.png" width="950" height="400">
 <li>
 Exit - This feature allows you to exit the game.
 </li>
@@ -171,13 +189,14 @@ Wallace Lazaro: Wallace fearlessly delved into the codebase, identifying and squ
 
 <h2>Authors:</h2>
 <p>
-Wallace Lazaro: https://github.com/wallace-21
+Wallace Lazaro:         GitHub:         https://github.com/wallace-21
 </p>
 <p>
-Chideraa Ozubu: https://github.com/xillere
+Chideraa Ozubu:         GitHub:         https://github.com/xillere
 </p>
 <p>
-Garrick Larson Potts (Ricki Potts): https://github.com/Garricku
+Garrick Larson Potts:   GitHub:         https://github.com/Garricku<br>
+                        Linkedin:       www.linkedin.com/in/garrick-potts-502871106
 </p>
 
 <h2>Technologies Used:</h2>

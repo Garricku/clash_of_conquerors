@@ -1,8 +1,13 @@
+#!/usr/bin/python3
+"""Rook module"""
+
 import pygame
 
 from pieces.Piece import Piece
 
+
 class Rook(Piece):
+	"""Rook class that inherits from Piece"""
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
@@ -14,6 +19,7 @@ class Rook(Piece):
 
 
 	def get_possible_moves(self, board):
+		"""Gets the possible moves this chess piece can make"""
 		output = []
 
 		moves_north = []

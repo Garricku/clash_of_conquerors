@@ -16,7 +16,9 @@ from const import *
 
 
 class Board:
+	"""The board class for the chess board"""
 	def __init__(self, width=700, height=700):
+		"""Initializes an instance of board"""
 		self.width = width
 		self.height = height
 		self.square_width = width // 8
@@ -39,6 +41,7 @@ class Board:
 		self.setup_board()
 
 	def generate_squares(self):
+		"""Generates the squares for the chessboard"""
 		output = []
 		for y in range(8):
 			for x in range(8):
@@ -55,6 +58,7 @@ class Board:
 
 
 	def setup_board(self):
+		"""Sets up the chess board"""
 		for y, row in enumerate(self.config):
 			for x, piece in enumerate(row):
 				if piece != '':
@@ -104,6 +108,7 @@ class Board:
 
 
 	def handle_click(self, mx, my):
+		"""Handles the clicking and selecting of pieces"""
 		x = mx // self.square_width
 		y = my // self.square_height
 		clicked_square = self.get_square_from_pos((x, y))
@@ -125,6 +130,7 @@ class Board:
 
 
 	def is_in_check(self, color, board_change=None): # board_change = [(x1, y1), (x2, y2)]
+		"""Checks if the King is in check"""
 		output = False
 		king_pos = None
 
@@ -171,6 +177,7 @@ class Board:
 
 
 	def is_in_checkmate(self, color):
+		"""Checks if the King has been checkmated"""
 		output = False
 
 		for piece in [i.occupying_piece for i in self.squares]:
@@ -186,16 +193,19 @@ class Board:
 
 
 	def get_square_from_pos(self, pos):
+		"""Returns a position of a square of the chess board"""
 		for square in self.squares:
 			if (square.x, square.y) == (pos[0], pos[1]):
 				return square
 
 
 	def get_piece_from_pos(self, pos):
+		"""Returns a chess pieces position on the chess board"""
 		return self.get_square_from_pos(pos).occupying_piece
 
 
 	def draw(self, display):
+		"""Draws a chess board with highlights for valid moves"""
 		if self.selected_piece is not None:
 			self.get_square_from_pos(self.selected_piece.pos).highlight = True
 			for square in self.selected_piece.get_valid_moves(self):

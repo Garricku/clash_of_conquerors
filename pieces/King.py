@@ -1,8 +1,13 @@
+#!/usr/bin/python3
+"""King module"""
+
 import pygame
 
 from pieces.Piece import Piece
 
+
 class King(Piece):
+	"""King class that inherits from Piece"""
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
@@ -14,6 +19,7 @@ class King(Piece):
 
 
 	def get_possible_moves(self, board):
+		"""Gets the possible moves this chess piece can make"""
 		output = []
 		moves = [
 			(0,-1), # north
@@ -43,6 +49,7 @@ class King(Piece):
 		return output
 
 	def can_castle(self, board):
+		"""Checks if the player can use castling"""
 		if not self.has_moved:
 
 			if self.color == 'white':
@@ -79,6 +86,7 @@ class King(Piece):
 
 
 	def get_valid_moves(self, board):
+		"""Checks if the move is valid"""
 		output = []
 		for square in self.get_moves(board):
 			if not board.is_in_check(self.color, board_change=[self.pos, square.pos]):
