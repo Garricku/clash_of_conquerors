@@ -3,6 +3,7 @@
 <h3>The Strategic Chess Game For Those Hungry For Victory!</h3>
 
 <h2>Description:</h2>
+<img align="center" src="readme_pics/Screenshot 2024-03-28 202122.png" width="1000" height="800">
 <p>
 This is a chess game designed to put your mind to the test and improve
 your ability to build strategies and think on your feet.
@@ -33,6 +34,14 @@ information.
 <h2>Project Structure:</h2>
 
 Clash_Of_Conqurors/<br>
+│   pieces<br>
+│   .gitignore<br>
+│   readme_pics<br>
+│───web_static/<br>
+        ├───scripts/<br>
+        ├───styles/<br>
+        ├───index.html<br>
+│   README.md<br>
 │   README.md<br>
 │   Clash_of_Conquerors.py<br>
 │   game.py<br>
@@ -48,6 +57,7 @@ Clash_Of_Conqurors/<br>
         ├───menus/<br>
         ├───borders/<br>
         ├───chess_pieces/<br>
+        ├───profile_pictures/<br>
         └───chess_board/
 
 <h3>Here’s a brief explanation of each component:</h3>
@@ -61,6 +71,7 @@ Clash_of_Conquerors.py: The main game file that ties everything together.
 <li>
 game.py: Contains the source code for game menus and makes the menus interactive.
 </li>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="1000" height="800">
 <li>
 chess.py: Contains the source code for the chess board and game logic.
 </li>
@@ -99,6 +110,7 @@ cursors/: Stores all the GUI cursors
 </li>
 </ul>
 <h2>Features and Functionality:</h2>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170604.png" width="1000" height="800">
 <ul>
 <li>
 Play - This allows you to play the chess game.
@@ -109,9 +121,11 @@ Settings - This allows you to change the colors of the tiles to help things be e
 <li>
 visible to the users preferences.
 </li>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170647.png" width="1000" height="800">
 <li>
 Tutorial - This is a short explanation on how to play the game.
 </li>
+<img align="center" src="readme_pics/Screenshot 2024-03-26 170701.png" width="1000" height="800">
 <li>
 Surrender - This Feature allows you to quit your current chess match.
 </li>
