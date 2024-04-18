@@ -195,8 +195,8 @@ Wallace Lazaro:         GitHub:         https://github.com/wallace-21
 Chideraa Ozubu:         GitHub:         https://github.com/xillere
 </p>
 <p>
-Garrick Larson Potts:   GitHub:         https://github.com/Garricku
-                        Linkedin:       'www.linkedin.com/in/garrick-potts-502871106'>Linkedin
+Garrick Larson Potts:   GitHub:         https://github.com/Garricku<br>
+                        Linkedin:       www.linkedin.com/in/garrick-potts-502871106
 </p>
 
 <h2>Technologies Used:</h2>
